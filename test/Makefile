@@ -2,11 +2,16 @@
 # See https://docs.cocotb.org/en/stable/quickstart.html for more info
 
 # defaults
-SIM ?= icarus
+SIM ?= verilator
 FST ?= -fst # Use more efficient FST format
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = project.v
+PROJECT_SOURCES = \
+	tt_um_aoc_2025.sv day10_wrapper.sv aoc-2025/src/axi_read_vector.sv aoc-2025/src/axi_stream_if.svh \
+	aoc-2025/src/axi_write_vector.sv aoc-2025/src/configure_machine.sv aoc-2025/src/day10.sv \
+	aoc-2025/src/day10_input.sv aoc-2025/src/day10_input_reader.sv aoc-2025/src/day10_output.sv \
+	aoc-2025/src/day10_output_writer.sv aoc-2025/src/enumerate_solutions.sv aoc-2025/src/gf2_rref.sv \
+	aoc-2025/src/popcount.sv aoc-2025/src/popcount_chain.sv
 
 ifneq ($(GATES),yes)
 
@@ -32,7 +37,11 @@ VERILOG_SOURCES += $(PWD)/gate_level_netlist.v
 endif
 
 # Allow sharing configuration between design and testbench via `include`:
-COMPILE_ARGS 		+= -I$(SRC_DIR)
+COMPILE_ARGS 		+= -I$(SRC_DIR) -I$(SRC_DIR)/aoc-2025
+
+# Verilator warning flags (common suppressions for TinyTapeout projects):
+COMPILE_ARGS 		+= -Wno-WIDTHEXPAND -Wno-WIDTHTRUNC -Wno-PINCONNECTEMPTY
+COMPILE_ARGS 		+= -Wno-UNUSEDSIGNAL -Wno-UNUSEDPARAM -Wno-LITENDIAN
 
 # Include the testbench sources:
 VERILOG_SOURCES += $(PWD)/tb.v
