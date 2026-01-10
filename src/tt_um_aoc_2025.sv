@@ -23,4 +23,9 @@ module tt_um_aoc_2025 (
       , .data_out_tdata ( uo_out )
       );
 
+  assign uio_out = '0;
+  assign uio_oe  = '0;
+
+  wire _unused = &{ena, clk, rst_n, uio_in, 1'b0};
+
 endmodule
