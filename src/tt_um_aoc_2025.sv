@@ -17,15 +17,26 @@ module tt_um_aoc_2025 (
 );
 
   day10_wrapper u_day10_wrapper
-      ( .clk            ( clk    )
-      , .rst_n          ( rst_n  )
-      , .data_in_tdata  ( ui_in  )
-      , .data_out_tdata ( uo_out )
+      ( .clk             ( clk        )
+      , .rst_n           ( rst_n      )
+
+      , .data_in_tdata   ( ui_in      )
+      , .data_in_tvalid  ( uio_in[7]  )
+      , .data_in_tlast   ( uio_in[6]  )
+      , .data_in_tready  ( uio_out[5] )
+
+      , .data_out_tdata  ( uo_out     )
+      , .data_out_tvalid ( uio_out[3] )
+      , .data_out_tlast  ( uio_out[2] )
+      , .data_out_tready ( uio_in[1]  )
       );
 
-  assign uio_out = '0;
-  assign uio_oe  = '0;
+  assign uio_oe = { /* data in */ 4'b0010, /* data out */ 4'b0110 };
 
-  wire _unused = &{ena, clk, rst_n, uio_in, 1'b0};
+  wire _unused =
+    &{ ena, clk, rst_n
+     ,  uio_in[5],  uio_in[4],  uio_in[3],  uio_in[2],  uio_in[0]
+     , uio_out[7], uio_out[6], uio_out[4], uio_out[1], uio_out[0]
+     };
 
 endmodule

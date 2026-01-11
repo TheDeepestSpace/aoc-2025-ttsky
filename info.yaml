@@ -47,14 +47,14 @@ pinout:
   uo[7]: "AXI out"
 
   # Bidirectional pins
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
-  uio[3]: ""
-  uio[4]: ""
-  uio[5]: ""
-  uio[6]: ""
-  uio[7]: ""
+  uio[0]: "unused"
+  uio[1]: "AXI out tready (in)"
+  uio[2]: "AXI out tlast  (out)"
+  uio[3]: "AXI out tvalid (out)"
+  uio[4]: "unused"
+  uio[5]: "AXI in tready (out)"
+  uio[6]: "AXI in tlast  (in)"
+  uio[7]: "AXI in tvalid (in)"
 
 # Do not change!
 yaml_version: 6
