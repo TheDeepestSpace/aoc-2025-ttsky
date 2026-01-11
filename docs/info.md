@@ -9,12 +9,18 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+This is a hardened SystemVerilog solution of day 10 of advent of code for 2025:
+https://adventofcode.com/2025/day/10
+
+It works by writing the input data via input AXI stream, and reading the solutions via another AXI
+stream.
+
+This is a proof-of-concept implementation, and is not intended for production.
 
 ## How to test
 
-Explain how to use your project
+Hook up a python controller (from the parent repo) to the axi streams.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+None
