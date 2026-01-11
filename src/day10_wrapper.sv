@@ -18,7 +18,7 @@ module day10_wrapper #( parameter int unsigned AXI_DATA_WIDTH = 8 )
   axi_stream_if #( .DATA_WIDTH ( AXI_DATA_WIDTH ) ) data_in();
 
   assign data_in.tdata  = data_in_tdata;
-  assign data_in.tvalid = data_in_tready;
+  assign data_in.tvalid = data_in_tvalid;
   assign data_in.tlast  = data_in_tlast;
   assign data_in_tready = data_in.tready;
 

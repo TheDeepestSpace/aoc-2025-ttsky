@@ -33,10 +33,11 @@ module tt_um_aoc_2025 (
 
   assign uio_oe = { /* data in */ 4'b0010, /* data out */ 4'b0110 };
 
+  assign {uio_out[7], uio_out[6], uio_out[4], uio_out[1], uio_out[0]} = '0;
+
   wire _unused =
     &{ ena, clk, rst_n
      ,  uio_in[5],  uio_in[4],  uio_in[3],  uio_in[2],  uio_in[0]
-     , uio_out[7], uio_out[6], uio_out[4], uio_out[1], uio_out[0]
      };
 
 endmodule
