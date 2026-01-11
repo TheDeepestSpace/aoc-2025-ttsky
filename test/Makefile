@@ -2,16 +2,13 @@
 # See https://docs.cocotb.org/en/stable/quickstart.html for more info
 
 # defaults
-SIM ?= verilator
+SIM ?= icarus
 FST ?= -fst # Use more efficient FST format
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
 PROJECT_SOURCES = \
-	tt_um_aoc_2025.sv day10_wrapper.sv aoc-2025/src/axi_read_vector.sv aoc-2025/src/axi_stream_if.svh \
-	aoc-2025/src/axi_write_vector.sv aoc-2025/src/configure_machine.sv aoc-2025/src/day10.sv \
-	aoc-2025/src/day10_input.sv aoc-2025/src/day10_input_reader.sv aoc-2025/src/day10_output.sv \
-	aoc-2025/src/day10_output_writer.sv aoc-2025/src/enumerate_solutions.sv aoc-2025/src/gf2_rref.sv \
-	aoc-2025/src/popcount.sv aoc-2025/src/popcount_chain.sv
+	tt_um_aoc_2025.sv2v.v day10_wrapper.sv2v.v aoc-2025/src/popcount.sv2v.v \
+	aoc-2025/src/popcount_chain.sv2v.v aoc-2025/src/gf2_rref.sv2v.v
 
 ifneq ($(GATES),yes)
 
@@ -44,7 +41,7 @@ COMPILE_ARGS 		+= -Wno-WIDTHEXPAND -Wno-WIDTHTRUNC -Wno-PINCONNECTEMPTY
 COMPILE_ARGS 		+= -Wno-UNUSEDSIGNAL -Wno-UNUSEDPARAM -Wno-LITENDIAN
 
 # Include the testbench sources:
-VERILOG_SOURCES += $(PWD)/tb.v
+VERILOG_SOURCES += $(PWD)/tb.sv
 TOPLEVEL = tb
 
 # List test modules to run, separated by commas and without the .py suffix:
