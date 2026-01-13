@@ -8,7 +8,7 @@ TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
 PROJECT_SOURCES = \
 	tt_um_aoc_2025.sv2v.v day10_wrapper.sv2v.v aoc-2025/src/popcount.sv2v.v \
-	aoc-2025/src/popcount_chain.sv2v.v aoc-2025/src/gf2_rref.sv2v.v
+	aoc-2025/src/popcount_chain.sv2v.v aoc-2025/src/gf2_rref.sv2v.v aoc-2025/src/flag_fifo.sv2v.v
 
 ifneq ($(GATES),yes)
 

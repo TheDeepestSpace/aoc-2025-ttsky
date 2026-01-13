@@ -22,6 +22,7 @@ project:
     - "aoc-2025/src/popcount.sv2v.v"
     - "aoc-2025/src/popcount_chain.sv2v.v"
     - "aoc-2025/src/gf2_rref.sv2v.v"
+    - "aoc-2025/src/flag_fifo.sv2v.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
